@@ -100,12 +100,15 @@ const App = (props: any) => {
       return generateRandomNumberFromList(filterExistingGifts([3, 4, 5, 6, 7]));
     } else if (price > 1800 && price <= 2200) {
       console.log("1801 < gift < 2200");
+      return generateRandomNumberFromList(filterExistingGifts([4, 5, 6, 7]));
+    } else if (price > 2200 && price <= 2800) {
+      console.log("2201 < gift < 2800");
       return generateRandomNumberFromList(filterExistingGifts([5, 7]));
     } else if (price > 2800) {
       console.log("2800 < gift");
       return generateRandomNumberFromList(filterExistingGifts([8, 9]));
     } else {
-      console.log('gift not valid');
+      console.log("gift not valid");
       return -1;
     }
   };
@@ -130,7 +133,7 @@ const App = (props: any) => {
       <div>
         <Formik
           initialValues={{
-            invoice: "",
+            invoice: `${(Number(total) + 1).toString()}`,
             price: props.price,
             name: "",
             phone: "",
@@ -254,17 +257,18 @@ const App = (props: any) => {
               </div>
             </ScratchCard>
             {confetti && (
-              <button
-                type="button"
-                className={`${styles.button} !w-fit`}
-                onClick={() =>
-                  window.open(
-                    "https://maps.app.goo.gl/Dz7FQBAiVQLRmiN59?g_st=ic"
-                  )
-                }
-              >
-                Submit Your Review
-              </button>
+              <>
+                <p className="text-lg pt-1 font-bold">Thank you for shopping with SMC!!</p>
+                <button
+                  type="button"
+                  className={`${styles.button} !w-fit`}
+                  onClick={() =>
+                    window.open("https://g.page/r/CQN9FOUL2_2CEBE/review")
+                  }
+                >
+                  Submit Your Review
+                </button>
+              </>
             )}
             {confetti && (
               <div className="min-w-screen">
